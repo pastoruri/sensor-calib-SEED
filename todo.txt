@@ -1,0 +1,1 @@
+1. Parametrizar los valores de la calibracion a un archivo externo

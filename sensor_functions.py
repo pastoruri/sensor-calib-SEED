@@ -2,11 +2,16 @@ import numpy as np
 
 
 
-def calcular_inclinacion_pared(
-    d_bottom, d_side, d_top,
-    theta_side_deg, theta_top_deg,
-    delta_x_side, delta_y_top
-):
+def calcular_inclinacion_pared(d_bottom, d_side, d_top):
+    
+    # Calibración previa
+    theta_side_deg = 16.09  # inclinación horizontal
+    theta_top_deg  = 14.54  # inclinación vertical
+
+    # Posiciones relativas
+    delta_x_side = -60  # mm (izquierda de bottom)
+    delta_y_top  = 25  # mm (encima de bottom)
+    
     # Convertir ángulos a radianes
     theta_side = np.radians(theta_side_deg)
     theta_top  = np.radians(theta_top_deg)
@@ -45,25 +50,14 @@ def calcular_inclinacion_pared(
 
 # === 🧪 EJEMPLO DE USO ===
 
-# Entradas (ejemplo real)
-		
-
 d_bottom = 551.38  # mm
 d_side   = 574.1
 d_top    = 569.43
 
-# Calibración previa
-theta_side_deg = 16.09  # inclinación horizontal
-theta_top_deg  = 14.54  # inclinación vertical
 
-# Posiciones relativas
-delta_x_side = -60  # mm (izquierda de bottom)
-delta_y_top  = 25  # mm (encima de bottom)
 
 pitch, yaw, normal = calcular_inclinacion_pared(
-    d_bottom, d_side, d_top,
-    theta_side_deg, theta_top_deg,
-    delta_x_side, delta_y_top
+    d_bottom, d_side, d_top
 )
 
 print(f"✅ Inclinación vertical (pitch): {pitch:.2f}°")
